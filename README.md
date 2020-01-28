@@ -11,6 +11,7 @@ The aim of this project is to discover the Docker technology and set up a web se
 * Make sure that the server is running with an index that can be disabled.
 ## Usage
 Start Docker.
+
 To build an image from the Dockerfile use command line:
 ```
 docker build -t [name] .
