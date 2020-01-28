@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/19 13:40:55 by rofernan          #+#    #+#              #
-#    Updated: 2020/01/27 18:20:44 by rofernan         ###   ########.fr        #
+#    Updated: 2020/01/28 10:16:37 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RUN		apt-get update -yq \
 		&& apt-get upgrade -yq \
 		&& apt-get install wget -yq \
 		&& apt-get install nginx -yq \
-		&& apt-get install mariadb-server -yq\
+		&& apt-get install mariadb-server -yq \
 		&& apt-get -y install php7.3 php-mysql php-fpm php-cli php-mbstring -yq
 
 COPY	./srcs/* /var/
