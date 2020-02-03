@@ -6,7 +6,7 @@
 #    By: rofernan <rofernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/19 13:40:55 by rofernan          #+#    #+#              #
-#    Updated: 2020/01/28 10:16:37 by rofernan         ###   ########.fr        #
+#    Updated: 2020/02/03 15:50:10 by rofernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,11 @@ RUN		wget https://wordpress.org/latest.tar.gz \
 		&& rm -rf latest.tar.gz \
 		&& chmod 755 -R /var/www/html/wordpress
 
-RUN		cp /var/localhost /etc/nginx/sites-available/localhost \
+RUN		mv /var/localhost /etc/nginx/sites-available/localhost \
 		&& ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/localhost \
 		&& rm /etc/nginx/sites-enabled/default
+
+RUN		mv /var/wp-config.php /var/www/html/wordpress
 
 RUN		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/C=FR/ST=75/L=Paris/O=42/CN=rofernan' -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
