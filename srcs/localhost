@@ -1,10 +1,11 @@
 server {
-		listen 80 default_server;
+		listen 80;
 		listen [::]:80 default_server;
 
 		# SSL configuration
-		listen 443 ssl default_server;
-		listen [::]:443 ssl default_server;
+		listen 443 ssl;
+		server_name localhost
+		#listen [::]:443 ssl;
 
 		ssl on;
 		ssl_protocols TLSv1.1 TLSv1.2;								# Permet d'activer uniquement les protocoles sécurisés (TLS version 1.1 et 1.2)
@@ -12,6 +13,12 @@ server {
 		ssl_prefer_server_ciphers on;								# Permet de forcer le navigateur à utiliser la méthode de chiffrement la plus sécurisée (256 Bits)
 		ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;		# Sélection de la chaine complète de certification (concaténation du certificat SSL du domaine, du certificat SSL intermédiaire puis de la racine)
 		ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;	# Sélection de la clé privée associée au certificat SSL du domaine
+
+		# redirect in case of error 400
+		server_name allroundtraders.co.za www.allroundtraders.co.za img.allroundtraders.co.za;
+		if ($scheme = http) {
+        	return 301 https://$server_name$request_uri;
+		}
 
 		root /var/www/html;
 		index index.html index.htm index.php;
