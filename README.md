@@ -1,4 +1,4 @@
-# ft_server
+# ft_server (42 project)
 ## Summary
 The aim of this project is to discover the Docker technology and set up a web server.
 ## Instructions
